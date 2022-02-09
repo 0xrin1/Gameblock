@@ -33,7 +33,7 @@ contract GameblockTest is DSTest {
         assertEq(gameblock.states(1), "another state");
     }
 
-    function setWinFunction() public {
+    function testWinFunction() public {
         assert(gameblock.winFunction());
     }
 }
