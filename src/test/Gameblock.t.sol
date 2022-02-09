@@ -6,7 +6,7 @@ import "../../src/Gameblock.sol";
 
 contract GameblockImplementation is Gameblock {
     function winFunction() public override returns (bool won) {
-
+        return true;
     }
 }
 
@@ -30,6 +30,6 @@ contract GameblockTest is DSTest {
     }
 
     function setWinFunction() public {
-        gameblock.winFunction();
+        assert(gameblock.winFunction());
     }
 }
