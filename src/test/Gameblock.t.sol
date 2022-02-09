@@ -5,12 +5,16 @@ import "ds-test/test.sol";
 import "../../src/Gameblock.sol";
 
 contract GameblockImplementation is Gameblock {
+    function stringEqual(string memory a, string memory b) private returns (bool equal) {
+        return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));
+    }
+
     function stateValidator(string calldata state) public override returns (bool won) {
         return true;
     }
 
     function winFunction() public override returns (bool won) {
-        return true;
+        return stringEqual(states[0], "some state") && stringEqual(states[1], "another state");
     }
 }
 
@@ -34,6 +38,8 @@ contract GameblockTest is DSTest {
     }
 
     function testWinFunction() public {
+        gameblock.addState("some state");
+        gameblock.addState("another state");
         assert(gameblock.winFunction());
     }
 }
