@@ -4,11 +4,17 @@ pragma solidity 0.8.10;
 import "ds-test/test.sol";
 import "../../src/Gameblock.sol";
 
+contract GameblockImplementation is Gameblock {
+    function winFunction() public override returns (bool won) {
+
+    }
+}
+
 contract GameblockTest is DSTest {
-    Gameblock gameblock;
+    GameblockImplementation gameblock;
 
     function setUp() public {
-        gameblock = new Gameblock();
+        gameblock = new GameblockImplementation();
     }
 
     function testAddState() public {
@@ -21,5 +27,9 @@ contract GameblockTest is DSTest {
         gameblock.addState("another state");
         assertEq(gameblock.states(0), "some state");
         assertEq(gameblock.states(1), "another state");
+    }
+
+    function setWinFunction() public {
+        gameblock.winFunction();
     }
 }
