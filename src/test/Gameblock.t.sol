@@ -5,6 +5,10 @@ import "ds-test/test.sol";
 import "../../src/Gameblock.sol";
 
 contract GameblockImplementation is Gameblock {
+    function stateValidator(string calldata state) public override returns (bool won) {
+        return true;
+    }
+
     function winFunction() public override returns (bool won) {
         return true;
     }
